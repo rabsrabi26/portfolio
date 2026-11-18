@@ -1,0 +1,49 @@
+/*!
+ * rabsrabi brand kit, v1.1.0: tokens only
+ * Colors, type and shape tokens (light, dark and auto) with no components or base styles.
+ * For a site that keeps its own component CSS. Sites that want the shared header, cards and buttons use brand.css instead.
+ * Theme: add data-theme="light|dark" to <html>, or leave it unset to follow the system. brand.js manages that choice.
+ */
+
+/* ---------- tokens ---------- */
+:root {
+  color-scheme: light;
+  --paper: #F3F6FA;
+  --surface: #FFFFFF;
+  --sunken: #E9EFF6;
+  --ink: #0B1626;
+  --muted: #46566F;
+  --line: #D5DEEA;
+  --line-strong: #7A8AA3;
+  --signal: #067A6C;
+  --signal-ink: #FFFFFF;
+  --signal-soft: rgba(6, 122, 108, .10);
+  --spark: #A85A00;
+  --beam: #2F54C9;
+  --ok: #17794B;
+  --bad: #C0332B;
+  --shadow: 0 1px 2px rgba(11, 22, 38, .06), 0 10px 28px rgba(11, 22, 38, .07);
+  --display: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --maxw: 1120px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #080D17; --surface: #0F1829; --sunken: #0B1322; --ink: #E8EEF8; --muted: #9AA9C2;
+    --line: #1C2A42; --line-strong: #5E7394; --signal: #2DD4BF; --signal-ink: #04201C;
+    --signal-soft: rgba(45, 212, 191, .12); --spark: #FBBF24; --beam: #8FA9FF; --ok: #4ADE80; --bad: #FF8A80;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #080D17; --surface: #0F1829; --sunken: #0B1322; --ink: #E8EEF8; --muted: #9AA9C2;
+  --line: #1C2A42; --line-strong: #5E7394; --signal: #2DD4BF; --signal-ink: #04201C;
+  --signal-soft: rgba(45, 212, 191, .12); --spark: #FBBF24; --beam: #8FA9FF; --ok: #4ADE80; --bad: #FF8A80;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .35);
+  color-scheme: dark;
+}

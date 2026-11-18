@@ -5,15 +5,14 @@ Static portfolio site: plain HTML, CSS and JavaScript. No build step or third-pa
 ## Preview locally
 
 ```bash
-cd rabsrabi-site
-python3 -m http.server 8080      # then open http://localhost:8080
+python3 -m http.server 8080      # run from the repository root, then open http://localhost:8080
 ```
 
 (Open it through a server, not by double-clicking `index.html`, because the site uses root-relative paths such as `/assets/app.js`.)
 
 ## Upload to rabsrabi.com
 
-Upload the **contents** of this folder (not the folder itself) so that `index.html` sits at the site root. Include the hidden files `.htaccess` and `_headers`.
+The repository root is the site. Upload its **contents** (not the `.git` folder) so that `index.html` sits at the site root. Include the hidden files `.htaccess` and `_headers`.
 
 | Your host | What to do |
 |---|---|
@@ -25,13 +24,14 @@ Upload the **contents** of this folder (not the folder itself) so that `index.ht
 
 - **Text, jobs, projects:** `index.html`
 - **Email address:** search for `islam.muhammed.rabiul@gmail.com` in `index.html` and `assets/app.js`
-- **Colours:** the variables at the top of `assets/style.css` (light and dark sets)
+- **Colours and type:** shared with the other rabsrabi sites through the brand kit in `assets/brand/` (tokens and theme script). Do not edit those two files here; copy updates from <https://github.com/rabsrabi26/brand>. Page styles are in `assets/style.css`
 - **Photo:** replace `assets/photo.jpg` (4:5 portrait, about 640×800). If it is missing, the page shows an "RI" monogram instead.
 - **Social preview image:** `og-image.png` (1200×630)
 
 ## What's inside
 
-- Automatic light/dark from the system, with an Auto → Light → Dark toggle that is remembered
+- The rabsrabi brand: shared logo, colors, type, header and footer with the notes blog and the admin
+- Auto / Light / Dark switch from the brand kit, remembered for all of .rabsrabi.com
 - Animated network-graph hero (pauses off-screen, respects "reduce motion")
 - Lab scheduler: a browser-side port of the uploaded `MIMO-Scheduling-Simulation-Reviewed-v2` package, including its log-distance/shadowing channel-rate model and five event-driven scheduler policies; 100 runs for `main.m`, 50 runs for the sensitivity study, mean ± 95% confidence intervals, service-class probability weights, α/β controls and an antenna allocation timeline
 - Lab subnet calculator: IPv4 network, netmask, wildcard, broadcast, usable-host range and subnet splitting

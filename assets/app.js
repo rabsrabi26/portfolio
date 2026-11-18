@@ -18,46 +18,20 @@
     toastT = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
   }
 
-  /* ---------- theme: auto (system) → light → dark ---------- */
-  var themeBtn = $('#themeBtn');
-  var ICONS = {
-    auto: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>',
-    light: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
-    dark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'
-  };
+  /* ---------- theme ---------- */
+  /* The Auto / Light / Dark switch and the saved choice come from the brand kit (assets/brand/brand.js),
+     which sends a "themechange" event whenever the theme changes. Here we only keep the browser bar color in step. */
   var metas = $$('meta[name="theme-color"]');
   var metaOrig = metas.map(function (m) { return m.getAttribute('content'); });
-  function getMode() {
+  function syncThemeColor() {
     var a = root.getAttribute('data-theme');
-    return a === 'light' || a === 'dark' ? a : 'auto';
+    metas.forEach(function (m, i) { m.setAttribute('content', a === 'dark' ? '#080D17' : a === 'light' ? '#F3F6FA' : metaOrig[i]); });
   }
-  function setMode(mode, silent) {
-    if (mode === 'auto') {
-      root.removeAttribute('data-theme');
-      try { localStorage.removeItem('theme'); } catch (e) {}
-      metas.forEach(function (m, i) { m.setAttribute('content', metaOrig[i]); });
-    } else {
-      root.setAttribute('data-theme', mode);
-      try { localStorage.setItem('theme', mode); } catch (e) {}
-      metas.forEach(function (m) { m.setAttribute('content', mode === 'dark' ? '#080d17' : '#f5f7fa'); });
-    }
-    if (themeBtn) {
-      themeBtn.innerHTML = ICONS[mode];
-      themeBtn.setAttribute('aria-label', 'Theme: ' + mode + ' (click to change)');
-      themeBtn.title = 'Theme: ' + mode;
-    }
-    document.dispatchEvent(new Event('themechange'));
-    if (!silent) toast('Theme: ' + (mode === 'auto' ? 'auto (follows your system)' : mode));
-  }
-  setMode(getMode(), true);
-  if (themeBtn) themeBtn.addEventListener('click', function () {
-    var order = ['auto', 'light', 'dark'];
-    setMode(order[(order.indexOf(getMode()) + 1) % 3]);
-  });
-  if (window.matchMedia) {
-    var mq = matchMedia('(prefers-color-scheme: dark)');
-    var onMq = function () { document.dispatchEvent(new Event('themechange')); };
-    if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
+  syncThemeColor();
+  document.addEventListener('themechange', syncThemeColor);
+  function setMode(mode) {
+    if (window.RabsBrand) RabsBrand.setTheme(mode);
+    toast('Theme: ' + (mode === 'auto' ? 'auto (follows your system)' : mode));
   }
 
   /* ---------- nav ---------- */
@@ -536,6 +510,7 @@
     { t: 'Ping this server', k: 'latency network test speed response time', h: 'ping', f: function () { toast('pinging rabsrabi.com …'); ping(function (ms) { toast(ms == null ? 'ping failed (are you offline?)' : 'reply from rabsrabi.com: time=' + ms + ' ms'); }); } },
     { t: 'Show me the 404 page', k: 'error missing not found page', h: 'page', f: function () { window.location.href = '/404.html'; } },
     { t: 'sudo hire rabiul', k: 'easter egg root job recruiter opportunity', h: '🔑', f: function () { toast('[sudo] permission granted. Opening mail…'); setTimeout(function () { mailto('', '', 'Hi Rabiul, I would like to talk about an opportunity.'); }, 900); } },
+    { t: 'Read my notes (blog)', k: 'blog notes writing articles posts rabsrabi notes', h: 'blog.rabsrabi.com', f: function () { window.location.href = 'https://blog.rabsrabi.com/'; } },
     { t: 'Back to top', k: 'scroll home start', h: '#top', f: function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); } }
   ];
   function normaliseSearch(value) {

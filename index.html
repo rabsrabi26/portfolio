@@ -8,8 +8,8 @@
 <meta name="author" content="Muhammad Rabiul Islam">
 <link rel="canonical" href="https://rabsrabi.com/">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#080d17" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F3F6FA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#080D17" media="(prefers-color-scheme: dark)">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -24,11 +24,13 @@
 <meta property="og:image" content="https://rabsrabi.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 
-<script>
-/* Apply saved theme before first paint (prevents a flash). Default = follow the system. */
-try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
-</script>
-<link rel="stylesheet" href="/assets/style.css?v=reviewed-v2-20261115">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/brand/tokens.css">
+<script>window.RABS_BRAND = { palette: false };</script>
+<script src="/assets/brand/brand.js"></script>
+<link rel="stylesheet" href="/assets/style.css?v=brand-20261118">
 
 <script type="application/ld+json">
 {
@@ -52,9 +54,9 @@ try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') 
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="Rabiul Islam, home">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--accent)"/><g stroke="var(--accent-ink)" stroke-width="4" stroke-linecap="round" fill="none"><path d="M20 46V18h13a8 8 0 0 1 0 16H20"/><path d="M33 34l12 12"/></g><circle cx="46" cy="18" r="4" fill="var(--accent-ink)"/></svg>
-      <span>rabs<b>/</b>rabi</span>
+    <a class="lockup" href="#top" aria-label="rabsrabi, home">
+      <svg class="mark" aria-hidden="true"><use href="#rs-mark"/></svg>
+      <span class="wm">rabs<i>rabi</i></span>
     </a>
     <nav class="links" id="links" aria-label="Primary">
       <a href="#about">About</a>
@@ -63,10 +65,20 @@ try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') 
       <a href="#lab">Lab</a>
       <a href="#research">Research</a>
       <a href="#contact">Contact</a>
+      <a href="https://blog.rabsrabi.com/">Notes <span aria-hidden="true">&nearr;</span></a>
+      <div class="seg seg-menu" role="group" aria-label="Theme">
+        <button type="button" data-theme-choice="auto" aria-pressed="true">Auto</button>
+        <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
+        <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+      </div>
     </nav>
     <div class="tools">
       <button class="kbd-btn" id="palBtn" aria-label="Open site search" aria-haspopup="dialog" aria-controls="palBg" aria-expanded="false"><span>Search</span><kbd>Ctrl K</kbd></button>
-      <button class="icon-btn" id="themeBtn" aria-label="Theme: auto" title="Theme: auto"></button>
+      <div class="seg seg-head" role="group" aria-label="Theme">
+        <button type="button" data-theme-choice="auto" aria-pressed="true">Auto</button>
+        <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
+        <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+      </div>
       <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="links">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -424,7 +436,8 @@ try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') 
 
 <footer>
   <div class="wrap">
-    <span>© <span id="yr">2026</span> Muhammad Rabiul Islam · Dhaka, Bangladesh</span>
+    <a class="lockup" href="#top" aria-label="rabsrabi, back to top"><svg class="mark" style="width:26px;height:26px" aria-hidden="true"><use href="#rs-mark"/></svg><span class="wm" style="font-size:17px">rabs<i>rabi</i></span></a>
+    <span>© <span id="yr">2026</span> Muhammad Rabiul Islam · Dhaka, Bangladesh · <a href="https://blog.rabsrabi.com/">rabsrabi notes</a></span>
     <span class="mono footer-hint">Press <kbd>Ctrl</kbd>+<kbd>K</kbd> or <kbd>/</kbd> to search</span>
     <nav class="footer-socials" aria-label="Contact and social profiles">
       <button type="button" id="copyMail" aria-label="Copy email address" title="Copy email address">
@@ -450,7 +463,7 @@ try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') 
 <div class="toast" id="toast" role="status"></div>
 
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
-<script src="/assets/lab.js?v=reviewed-v2-20261115"></script>
-<script src="/assets/app.js?v=reviewed-v2-20261115"></script>
+<script src="/assets/lab.js?v=brand-20261118"></script>
+<script src="/assets/app.js?v=brand-20261118"></script>
 </body>
 </html>
