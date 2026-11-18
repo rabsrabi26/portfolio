@@ -338,3 +338,110 @@ footer .wrap { display: flex; align-items: center; gap: 16px; justify-content: s
 .mix-grid input { padding: 8px 7px; font: .82rem var(--mono); }
 .mix-control > small { color: var(--muted); font-size: .7rem; line-height: 1.4; }
 @media (max-width: 420px) { .mix-grid { gap: 5px; } .mix-grid input { padding: 7px 5px; } }
+
+
+/* ===== Live MATLAB research dashboard ===== */
+.research-live {
+  margin: 0 0 28px;
+  padding: clamp(16px, 3vw, 26px);
+  border: 1px solid var(--line, rgba(128, 128, 128, .25));
+  border-radius: 18px;
+  background: var(--surface, transparent);
+}
+
+.research-live .sub {
+  max-width: 680px;
+  margin: 10px 0 18px;
+}
+
+.research-live .result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.research-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line, rgba(128, 128, 128, .25));
+  border-radius: 13px;
+  background: var(--bg, transparent);
+}
+
+.research-card span {
+  font-size: .78rem;
+  color: var(--muted, #888);
+}
+
+.research-card strong {
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  font-weight: 750;
+  letter-spacing: -.035em;
+  font-variant-numeric: tabular-nums;
+}
+
+.research-card small {
+  font-size: .72rem;
+  line-height: 1.5;
+  color: var(--muted, #888);
+}
+
+#researchTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+#researchTable caption {
+  padding: 0 0 12px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text, inherit);
+}
+
+#researchTable th,
+#researchTable td {
+  padding: 11px 13px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--line, rgba(128, 128, 128, .2));
+}
+
+#researchTable th {
+  font-size: .75rem;
+  color: var(--muted, #888);
+  font-weight: 650;
+}
+
+#researchTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+#researchStatus {
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .research-live .result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .research-live .result-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .research-card {
+    padding: 12px;
+  }
+
+  #researchTable {
+    font-size: .78rem;
+  }
+}

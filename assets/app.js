@@ -241,7 +241,7 @@
   (function () {
     if (!window.Lab || !$('#gantt')) return;
     var Lab = window.Lab;
-    var st = { K: 20, M: 16, P: [30, 40, 30], A: .7, B: .3, Runs: 100, seed: 20261115, sel: 'priority' };
+    var st = { K: 40, M: 4, P: [30, 40, 30], A: .7, B: .3, Runs: 100, seed: 20261115, sel: 'priority' };
     var latest = null;
     var NAMES = ['Voice/Video', 'Text', 'Data'];
     var NS = 'http://www.w3.org/2000/svg';

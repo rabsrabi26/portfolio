@@ -290,10 +290,52 @@
 
     <!-- simulator -->
     <div class="pane on" id="pane-sim" role="tabpanel" aria-labelledby="tab-sim">
+                  <!-- Live MATLAB research results -->
+      <section class="research-live" aria-labelledby="research-live-title">
+        <div class="results-heading">
+          <div>
+            <span class="eyebrow">Live GitHub data</span>
+            <h3 id="research-live-title">Final thesis results · 200 Monte Carlo runs</h3>
+          </div>
+          <span class="sim-tag" id="researchStatus">Connecting to GitHub…</span>
+        </div>
+
+        <p class="sub">
+          Published MATLAB experiment results from the final thesis dataset.
+          These results are separate from the interactive browser simulator below.
+        </p>
+
+        <div class="result-grid" id="researchSummary" aria-live="polite">
+          <p class="note">Loading research data…</p>
+        </div>
+
+        <div class="mini scroll-x" style="margin-top:18px">
+          <table class="rtable" id="researchTable">
+            <caption>Scheduler comparison · 40 users · 16 antennas</caption>
+            <thead>
+              <tr>
+                <th>Scheduler</th>
+                <th>Waiting (ms)</th>
+                <th>Turnaround (ms)</th>
+                <th>Completion fairness</th>
+                <th>Utilization</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="5">Waiting for GitHub data…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row" style="justify-content:space-between;align-items:center;margin-top:14px">
+          <small class="sim-meta" id="researchUpdated">Source: MIMO-Scheduling-Simulation · final-thesis-200run</small>
+          <button class="btn" id="refreshResearch" type="button">Refresh research data</button>
+        </div>
+      </section>
       <div class="sim">
         <aside class="ctrl" aria-label="Simulation settings">
-          <label><span>Users (K) <b id="vK">20</b></span><input type="range" id="K" min="10" max="40" step="10" value="20"></label>
-          <label><span>Base-station antennas (M)</span><select id="M"><option value="4">4</option><option value="8">8</option><option value="16" selected>16 · main.m</option><option value="32">32</option><option value="64">64</option></select></label>
+          <label><span>Users (K) <b id="vK">40</b></span><input type="range" id="K" min="10" max="40" step="10" value="40"></label>
+          <label><span>Base-station antennas (M)</span><select id="M"><option value="4" selected>4</option><option value="8">8</option><option value="16">16 · main.m</option><option value="32">32</option><option value="64">64</option></select></label>
           <label><span>Monte Carlo runs</span><select id="Runs"><option value="50">50 · sensitivity study</option><option value="100" selected>100 · main.m</option></select></label>
           <fieldset class="mix-control">
             <legend>Service-class probability weights</legend>
@@ -465,5 +507,6 @@
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 <script src="/assets/lab.js?v=brand-20261118"></script>
 <script src="/assets/app.js?v=brand-20261118"></script>
+<script src="/assets/research.js?v=1"></script>
 </body>
 </html>
