@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/rabsrabico/public_html/
+    - /bin/cp -R 404.html CNAME index.html robots.txt sitemap.xml site.webmanifest apple-touch-icon.png favicon-32.png favicon.svg icon-192.png icon-512.png icon-maskable-512.png og-image.png $DEPLOYPATH
+    - /bin/cp -R assets $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
